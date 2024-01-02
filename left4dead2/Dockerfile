@@ -36,100 +36,43 @@ RUN dpkg --add-architecture i386
 RUN apt update
 RUN apt upgrade -y
 
-# Instala el paquete libc6:i386
 RUN apt install -y libc6:i386
-
-# Instala el paquete tar
 RUN apt install -y tar
-
-# Instala el paquete curl
 RUN apt install -y curl
-
-# Instala el paquete gcc
 RUN apt install -y gcc
-
-# Instala el paquete g++
 RUN apt install -y g++
-
-# Instala el paquete lib32gcc-s1
 RUN apt install -y lib32gcc-s1
-
-# Instala el paquete libgcc1
 RUN apt install -y libgcc1
-
-# Instala el paquete libcurl4-gnutls-dev:i386
 RUN apt install -y libcurl4-gnutls-dev:i386
 
 # Instala el paquete libssl3:i386 en reemplazo de libssl1.1:i386
 RUN apt install -y libssl3:i386
 
-# Instala el paquete libcurl4:i386
 RUN apt install -y libcurl4:i386
-
-# Instala el paquete lib32tinfo6
 RUN apt install -y lib32tinfo6
-
-# Instala el paquete libtinfo6:i386
 RUN apt install -y libtinfo6:i386
-
-# Instala el paquete lib32z1
 RUN apt install -y lib32z1
-
-# Instala el paquete lib32stdc++6
 RUN apt install -y lib32stdc++6
-
-# Instala el paquete libncurses5:i386
 RUN apt install -y libncurses5:i386
-
-# Instala el paquete libcurl3-gnutls:i386
 RUN apt install -y libcurl3-gnutls:i386
-
-# Instala el paquete libsdl2-2.0-0:i386
 RUN apt install -y libsdl2-2.0-0:i386
-
-# Instala el paquete iproute2
 RUN apt install -y iproute2
-
-# Instala el paquete gdb
 RUN apt install -y gdb
-
-# Instala el paquete libsdl1.2debian
 RUN apt install -y libsdl1.2debian
-
-# Instala el paquete libfontconfig1
 RUN apt install -y libfontconfig1
-
-# Instala el paquete telnet
 RUN apt install -y telnet
-
-# Instala el paquete net-tools
 RUN apt install -y net-tools
 
 # Instala el paquete netcat-openbsd en reemplazo de netcat
 RUN apt install -y netcat-openbsd
 
-# Instala el paquete tzdata
 RUN apt install -y tzdata
-
-# Instala el paquete numactl
 RUN apt install -y numactl
-
-# Instala el paquete tini
 RUN apt install -y tini
-
-# Instala el paquete git
 RUN apt install -y git
-
-# Instala el paquete locales
-RUN apt install -y locales
 
 # Crea el usuario "container"
 RUN useradd -m -d /home/container container
-
-RUN dpkg-reconfigure locales
-RUN echo "en_US.UTF-8 UTF-8" | tee /etc/locale.gen
-RUN dpkg-reconfigure --frontend=noninteractive locales
-RUN update-locale LANG=en_US.UTF-8
 
 ## instala rcon
 RUN cd /tmp/
