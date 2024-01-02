@@ -22,9 +22,9 @@
 
 FROM        --platform=$TARGETOS/$TARGETARCH debian:bookworm-slim
 
-LABEL       author="lechuga" maintainer="https://github.com/lechuga16/docker-l4d2"
+LABEL       author="lechuga" maintainer="https://github.com/lechuga16/pterodactyl/left4dead2"
 
-LABEL       org.opencontainers.image.source="https://github.com/lechuga16/docker-l4d2"
+LABEL       org.opencontainers.image.source="https://github.com/lechuga16/pterodactyl/left4dead2"
 LABEL       org.opencontainers.image.licenses=MIT
 
 ENV         DEBIAN_FRONTEND=noninteractive
@@ -35,7 +35,6 @@ RUN dpkg --add-architecture i386
 # Actualiza las listas de paquetes y realiza la actualización del sistema
 RUN apt update
 RUN apt upgrade -y
-RUN apt dist-upgrade -y
 
 # Instala el paquete libc6:i386
 RUN apt install -y libc6:i386
