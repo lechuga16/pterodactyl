@@ -117,13 +117,24 @@ RUN apt install -y numactl
 # Instala el paquete tini
 RUN apt install -y tini
 
+# Instala el paquete git
+RUN apt install -y git
+
+# Instala el paquete locales
+RUN apt install -y locales
+
 # Crea el usuario "container"
 RUN useradd -m -d /home/container container
 
+RUN dpkg-reconfigure locales
+RUN echo "en_US.UTF-8 UTF-8" | tee /etc/locale.gen
+RUN dpkg-reconfigure --frontend=noninteractive locales
+RUN update-locale LANG=en_US.UTF-8
+
 ## instala rcon
-RUN cd /tmp/ \
-RUN curl -sSL https://github.com/gorcon/rcon-cli/releases/download/v0.10.3/rcon-0.10.3-amd64_linux.tar.gz > rcon.tar.gz \
-RUN tar xvf rcon.tar.gz \
+RUN cd /tmp/
+RUN curl -sSL https://github.com/gorcon/rcon-cli/releases/download/v0.10.3/rcon-0.10.3-amd64_linux.tar.gz > rcon.tar.gz
+RUN tar xvf rcon.tar.gz
 RUN mv rcon-0.10.3-amd64_linux/rcon /usr/local/bin/
 
 USER        container
